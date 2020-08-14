@@ -1,19 +1,22 @@
 <template>
   <h1>{{ msg }}</h1>
-  <button @click="count++">count is: {{ count }}</button>
+  <button @click="increment">count is: {{ state.counter }}</button>
   <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
 </template>
 
 <script>
+import { useStore } from '../store/store';
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
   },
-  data() {
+  setup() {
+    const { increment, state } = useStore();
     return {
-      count: 0
-    }
-  }
-}
+      state,
+      increment,
+    };
+  },
+};
 </script>
