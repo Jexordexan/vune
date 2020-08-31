@@ -1,9 +1,18 @@
 import { ActionFunction } from './util/types';
 import { concernPath } from './globals';
-import { isPromise } from './util/helpers';
+import { isPromise, isAction } from './util/helpers';
+
+export function nameActions<T>(storeObject: T) {
+  Object.keys(storeObject).forEach((key) => {
+    const val = storeObject[key as keyof T];
+    if (isAction(val) && val.__action_key__ === '') {
+      val.__action_key__ = key;
+    }
+  });
+}
 
 export function action<A extends ActionFunction>(actor: A): A;
-export function action<A extends ActionFunction>(type: string, mutator: A): A;
+export function action<A extends ActionFunction>(type: string, actor: A): A;
 export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A {
   const name = typeof arg1 === 'string' ? arg1 : '';
   const actor = typeof arg1 === 'function' ? arg1 : arg2!;

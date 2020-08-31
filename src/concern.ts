@@ -5,6 +5,7 @@ import { concernPath, getCurrentState, getIsInitializing, stateStack } from './g
 import { guard } from './state';
 import { isPromise } from './util/helpers';
 import { nameMutations } from './mutation';
+import { nameActions } from './action';
 
 export function defineConcern<State extends object, R>(config: ConcernOptions<State, R>): ConcernOptions<State, R> {
   return config;
@@ -35,9 +36,11 @@ export function concern<State extends object, R>(name: string, config: ConcernOp
   if (isPromise(storeConcern)) {
     storeConcern.then((resolvedConcern) => {
       nameMutations(resolvedConcern);
+      nameActions(resolvedConcern);
     });
   } else {
     nameMutations(storeConcern);
+    nameActions(storeConcern);
   }
 
   stateStack.pop();
