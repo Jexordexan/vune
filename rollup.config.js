@@ -3,14 +3,14 @@ import replace from '@rollup/plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 
 const name = require('./package.json').name;
-const globals = 'vue';
+const external = ['vue'];
 
 export default [
   {
     input: 'src/index.ts',
+    external,
     output: [
       {
-        globals,
         file: `dist/${name}.js`,
         format: 'cjs',
         plugins: [
@@ -21,7 +21,6 @@ export default [
       },
       {
         name,
-        globals,
         file: `dist/${name}.min.js`,
         format: 'iife',
         plugins: [
@@ -36,10 +35,10 @@ export default [
   },
   {
     input: 'src/index.ts',
+    external,
     output: [
       {
         dir: `dist`,
-        globals,
         sourcemap: true,
         format: 'esm',
       },
