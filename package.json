@@ -5,6 +5,7 @@
     "dev": "vite",
     "changelog": "standard-changelog",
     "build": "rm -rf ./dist && rollup -c",
+    "bump": "npm version $(node ./scripts/bump.js)",
     "test": "jest"
   },
   "main": "dist/vune.js",
@@ -25,6 +26,7 @@
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/jest": "^26.0.10",
     "@vue/compiler-sfc": "^3.0.0-rc.5",
+    "conventional-recommended-bump": "^6.0.10",
     "cz-conventional-changelog": "^3.3.0",
     "jest": "^26.4.0",
     "rollup": "^2.23.1",
