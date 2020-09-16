@@ -6,6 +6,7 @@
     "changelog": "standard-changelog",
     "build": "rm -rf ./dist && rollup -c",
     "bump": "npm version $(node ./scripts/bump.js)",
+    "version": "npm run changelog && git add CHANGELOG.md",
     "test": "jest"
   },
   "main": "dist/vune.js",
