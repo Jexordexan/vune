@@ -1,6 +1,7 @@
 import { states, concernPath, getIsInitializing, getCurrentMutation } from './globals';
 import { watchEffect } from 'vue';
 import { traverse } from './util/traverse';
+import logger from './util/logger';
 
 const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: any) => {
   if (getIsInitializing()) return;
@@ -9,13 +10,13 @@ const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: a
   const prettyPath = path.join('/');
   switch (type) {
     case 'set':
-      console.log(leftPad, prettyType, prettyPath, key, oldValue, '=>', newValue);
+      logger.log(leftPad, prettyType, prettyPath, key, oldValue, '=>', newValue);
       break;
     case 'add':
-      console.log(leftPad, prettyType, prettyPath, key, newValue);
+      logger.log(leftPad, prettyType, prettyPath, key, newValue);
       break;
     default:
-      console.log(leftPad, prettyType, prettyPath, key);
+      logger.log(leftPad, prettyType, prettyPath, key);
   }
 };
 

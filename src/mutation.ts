@@ -1,6 +1,7 @@
 import { MutationFunction } from './util/types';
 import { concernPath, setCurrentMutation } from './globals';
 import { isMutation } from './util/helpers';
+import logger from './util/logger';
 
 export function nameMutations<T>(storeObject: T) {
   Object.keys(storeObject).forEach((key) => {
@@ -25,7 +26,7 @@ export function mutation<M extends MutationFunction>(arg1: string | M, arg2?: M)
       payload,
     });
     if (process.env.NODE_ENV === 'development') {
-      console.log('MUTATION', `${path}/${wrapped.__mutation_key__}`);
+      logger.log('MUTATION', `${path}/${wrapped.__mutation_key__}`);
     }
     const ret = mutator(payload);
     setCurrentMutation(null);
