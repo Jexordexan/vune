@@ -1,4 +1,5 @@
-import { createStore, mutation, storeProvider } from '../../src';
+import { createStore, mutation, storeProvider, module } from '../../src';
+import todosModule from './todos';
 
 const store = createStore({
   state: {
@@ -9,7 +10,10 @@ const store = createStore({
       state.counter += 1;
     });
 
+    const todos = module('todos', todosModule);
+
     return {
+      todos,
       increment,
     };
   },

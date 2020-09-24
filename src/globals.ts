@@ -4,7 +4,7 @@ import { Listener, MutationObject } from './util/types';
 let currentMutation: MutationObject | null = null;
 let isInitializing = false;
 export const stateStack: any[] = [];
-export const concernPath: string[] = [];
+export const modulePath: string[] = [];
 export const states = new WeakSet();
 export const subscriptions = new WeakMap<Object, Listener<any>[]>();
 export const actionSubscriptions = new WeakMap<

@@ -5,7 +5,7 @@ export interface StoreOptions<State, R> {
   init(state: State): R;
 }
 
-export interface ConcernOptions<State, R> extends StoreOptions<State, R> {
+export interface ModuleOptions<State, R> extends StoreOptions<State, R> {
   name?: string;
 }
 
@@ -19,8 +19,8 @@ export type ActionFunction = {
   __action_key__?: string;
 };
 
-export type StoreConcern<R> = R & {
-  __concern_key__?: string;
+export type StoreModule<R> = R & {
+  __module_key__?: string;
 };
 
 export type Listener<T> = (action: ActionObject, state: T) => void;

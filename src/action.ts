@@ -1,5 +1,5 @@
 import { ActionFunction } from './util/types';
-import { concernPath } from './globals';
+import { modulePath } from './globals';
 import { isPromise, isAction } from './util/helpers';
 import logger from './util/logger';
 
@@ -18,7 +18,7 @@ export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A 
   const name = typeof arg1 === 'string' ? arg1 : '';
   const actor = typeof arg1 === 'function' ? arg1 : arg2!;
 
-  const path = concernPath.join('/');
+  const path = modulePath.join('/');
   const wrapped = ((payload: any) => {
     if (process.env.NODE_ENV === 'development') {
       logger.log('STARTED', `${path}/${wrapped.__action_key__}`);

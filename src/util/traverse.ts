@@ -1,11 +1,11 @@
-import { isObject, isConcern, isArray } from './helpers';
+import { isObject, isModule, isArray } from './helpers';
 
 export function traverse(value: unknown, seen: Set<object> = new Set()) {
   if (!isObject(value) || seen.has(value)) {
     return value;
   }
 
-  if (seen.size > 0 && isConcern(value)) {
+  if (seen.size > 0 && isModule(value)) {
     return value;
   }
 

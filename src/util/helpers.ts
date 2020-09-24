@@ -1,4 +1,4 @@
-import { StoreConcern, MutationFunction, ActionFunction } from './types';
+import { StoreModule, MutationFunction, ActionFunction } from './types';
 
 export function isArray(obj: any): obj is Array<any> {
   return Array.isArray(obj);
@@ -8,8 +8,8 @@ export function isObject(val: unknown): val is Record<any, any> {
   return val !== null && typeof val === 'object';
 }
 
-export function isConcern(val: any): val is StoreConcern<any> {
-  return val && typeof val === 'object' && val.hasOwnProperty('__concern_key__');
+export function isModule(val: unknown): val is StoreModule<unknown> {
+  return val && typeof val === 'object' && val.hasOwnProperty('__module_key__');
 }
 
 export function isMutation(val: any): val is MutationFunction {

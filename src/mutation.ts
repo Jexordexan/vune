@@ -1,5 +1,5 @@
 import { MutationFunction } from './util/types';
-import { concernPath, setCurrentMutation } from './globals';
+import { modulePath, setCurrentMutation } from './globals';
 import { isMutation } from './util/helpers';
 import logger from './util/logger';
 
@@ -18,7 +18,7 @@ export function mutation<M extends MutationFunction>(arg1: string | M, arg2?: M)
   const name = typeof arg1 === 'string' ? arg1 : '';
   const mutator = typeof arg1 === 'function' ? arg1 : arg2!;
 
-  const path = concernPath.join('/');
+  const path = modulePath.join('/');
   const wrapped = ((payload: any) => {
     setCurrentMutation({
       type: name,

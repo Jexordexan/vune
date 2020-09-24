@@ -1,4 +1,4 @@
-import { states, concernPath, getIsInitializing, getCurrentMutation } from './globals';
+import { states, modulePath, getIsInitializing, getCurrentMutation } from './globals';
 import { watchEffect } from 'vue';
 import { traverse } from './util/traverse';
 import logger from './util/logger';
@@ -22,7 +22,7 @@ const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: a
 
 export function guard<T extends object>(state: T) {
   states.add(state);
-  const path = ['root'].concat(concernPath);
+  const path = ['root'].concat(modulePath);
 
   if (process.env.NODE_ENV === 'development') {
     watchEffect(() => traverse(state), {

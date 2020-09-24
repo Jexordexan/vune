@@ -5,8 +5,8 @@
 Here is a sample store:
 
 ```ts
-import { createStore, mutation, action, concern, getter } from 'vune';
-import messagesConcern from './concerns/messages';
+import { createStore, mutation, action, module, getter } from 'vune';
+import messagesModule from './modules/messages';
 import { wait } from './util';
 
 const store = createStore({
@@ -22,8 +22,8 @@ const store = createStore({
       state.counter = 0;
     });
 
-    // Nest grouped logic into a concern
-    const messages = concern(messagesConcern);
+    // Nest grouped logic into a module
+    const messages = module(messagesModule);
 
     const messageCount = getter(() => messages.all.length);
 
@@ -51,4 +51,4 @@ store.messageCount; // => number
 
 ## Store
 
-The store is the base object, but you can create sub-state, called `concerns` that nest state, mutations, and actions within your store.
+The store is the base object, but you can create sub-state, called `modules` that nest state, mutations, and actions within your store.

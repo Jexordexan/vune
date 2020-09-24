@@ -1,8 +1,8 @@
 import { action } from '../action';
 import { createStore } from '../createStore';
 import { ActionFunction } from '../util/types';
-import { concernPath } from '../globals';
-import { concern } from '../concern';
+import { modulePath } from '../globals';
+import { module } from '../module';
 
 describe('action', () => {
   let store: any;
@@ -14,7 +14,7 @@ describe('action', () => {
         const demo1 = action(() => {});
         const demo2 = action('explicit', () => {});
 
-        const nested = concern('nested', {
+        const nested = module('nested', {
           state: {},
           init() {
             return {
