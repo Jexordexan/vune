@@ -1,4 +1,4 @@
-itimport typescript from '@rollup/plugin-typescript';
+import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
 import node from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
