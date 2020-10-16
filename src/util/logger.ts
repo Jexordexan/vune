@@ -7,13 +7,14 @@ interface Logger {
 const logger: Logger = {
   devtools: null,
   log(...args) {
-    if (this.devtools) {
+    if (process.env.NODE_ENV === 'development' && this.devtools) {
       this.devtools.addTimelineEvent({
-        all: true,
         layerId: 'vune-store',
         event: {
           time: Date.now(),
-          data: [...args],
+          data: {
+            text: args.map((arg) => JSON.stringify(arg)).join(' '),
+          },
           meta: null,
         },
       });

@@ -1,5 +1,7 @@
-import typescript from '@rollup/plugin-typescript';
+itimport typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
+import node from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 
 const name = require('./package.json').name;
@@ -31,7 +33,7 @@ export default [
         ],
       },
     ],
-    plugins: [typescript({ target: 'es5' })],
+    plugins: [commonjs(), node(), typescript({ target: 'es5' })],
   },
   {
     input: 'src/index.ts',
@@ -44,6 +46,8 @@ export default [
       },
     ],
     plugins: [
+      commonjs(),
+      node(),
       typescript({
         declaration: true,
         declarationDir: 'dist/types',
