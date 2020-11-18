@@ -1,4 +1,4 @@
-import { Listener, MutationObject } from './util/types';
+import { Listener, MutationObject } from './types';
 
 // Globals
 let currentMutation: MutationObject | null = null;

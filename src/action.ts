@@ -1,5 +1,5 @@
-import { ActionFunction } from './util/types';
 import { modulePath } from './globals';
+import { ActionFunction } from './types';
 import { isPromise, isAction } from './util/helpers';
 import logger from './util/logger';
 

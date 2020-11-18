@@ -1,5 +1,5 @@
 import { subscriptions, actionSubscriptions } from './globals';
-import { MutationObject, SubscribeOptions, Listener } from './util/types';
+import { MutationObject, SubscribeOptions, Listener } from './types';
 
 export const subscriber = <T extends object>(state: T) => (
   listener: (mutation: MutationObject, state: T) => void

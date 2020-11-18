@@ -1,6 +1,6 @@
 import { reactive } from 'vue';
 
-import { ModuleOptions } from './util/types';
+import { ModuleOptions } from './types';
 import { modulePath, getCurrentState, getIsInitializing, stateStack } from './globals';
 import { guard } from './state';
 import { isPromise } from './util/helpers';

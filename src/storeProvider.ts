@@ -1,10 +1,10 @@
-import { InjectionKey, provide, inject } from 'vue';
+import { provide, inject } from 'vue';
+import { Store } from './types';
 
-export function storeProvider<T extends object>(store: T) {
-  const StoreSymbol: InjectionKey<T> = Symbol();
-
+export function storeProvider<T, R>(store: Store<T, R>) {
   return {
-    provideStore: () => provide(StoreSymbol, store),
-    useStore: () => inject(StoreSymbol)!,
+    provideStore: () => provide(store.$provideSymbol, store),
+    useStore: () => inject(store.$provideSymbol)!,
+    useModule: (moduleName: keyof R) => inject(store.$provideSymbol)?.[moduleName],
   };
 }

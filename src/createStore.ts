@@ -1,7 +1,7 @@
 import devtools from '@vue/devtools-api';
 import { reactive, readonly } from 'vue';
 
-import { StoreOptions, Store } from './util/types';
+import { StoreOptions, Store } from './types';
 import { setIsInitializing, stateStack } from './globals';
 import { subscriber, actionSubscriber } from './subscriptions';
 import { guard } from './state';

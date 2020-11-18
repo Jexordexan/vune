@@ -1,5 +1,5 @@
-import { MutationFunction } from './util/types';
 import { modulePath, setCurrentMutation } from './globals';
+import { MutationFunction } from './types';
 import { isMutation } from './util/helpers';
 import logger from './util/logger';
 
