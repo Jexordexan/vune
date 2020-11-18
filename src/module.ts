@@ -11,12 +11,12 @@ export function defineModule<State extends object, R>(config: ModuleOptions<Stat
   return config;
 }
 
-export function module<State extends object, R>(name: string, config: ModuleOptions<State, R>): R {
+export function module<State extends object, R>(name: string, config: ModuleOptions<State, R>): R | Promise<R> {
   modulePath.push(name);
   const state = reactive(config.state) as State;
   const currentState = getCurrentState();
 
-  if (!getIsInitializing) {
+  if (!getIsInitializing()) {
     throw new Error(`Cannot create module outside of store init()`);
   }
 
@@ -31,14 +31,15 @@ export function module<State extends object, R>(name: string, config: ModuleOpti
 
   const storeModule = config.init(state);
 
+  function onReady(resolvedModule: R) {
+    nameMutations(resolvedModule);
+    nameActions(resolvedModule);
+  }
+
   if (isPromise(storeModule)) {
-    storeModule.then((resolvedModule) => {
-      nameMutations(resolvedModule);
-      nameActions(resolvedModule);
-    });
+    storeModule.then(onReady);
   } else {
-    nameMutations(storeModule);
-    nameActions(storeModule);
+    onReady(storeModule);
   }
 
   stateStack.pop();
