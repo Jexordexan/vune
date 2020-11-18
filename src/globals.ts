@@ -16,6 +16,7 @@ export const actionSubscriptions = new WeakMap<
 >();
 
 export const getCurrentState = () => stateStack[stateStack.length - 1];
+export const getRootState = () => stateStack[0];
 
 export const getCurrentMutation = () => currentMutation;
 export const setCurrentMutation = (mutation: MutationObject | null) => {
