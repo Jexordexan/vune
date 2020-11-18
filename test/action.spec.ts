@@ -1,8 +1,4 @@
-import { action } from '../action';
-import { createStore } from '../createStore';
-import { ActionFunction } from '../util/types';
-import { modulePath } from '../globals';
-import { module } from '../module';
+import { action, createStore, ActionFunction, module } from '../src';
 
 describe('action', () => {
   let store: any;
