@@ -1,6 +1,6 @@
 # Vune
 
-`vune` is a state-management library for Vue 3. It is similar to vuex, but its fully type-complete through to your components.
+`vune` is a state-management plugin for Vue 3. It is similar to vuex, but its fully type-complete through to your components.
 
 Here is a sample store:
 
@@ -49,6 +49,61 @@ store.messages.create('Hello friend'); // MUTATION: messages.create
 store.messageCount; // => number
 ```
 
+## Installation
+
+Vunes only peer dependency is Vue 3.
+
+```bash
+npm install vune
+
+# or
+
+yarn add vune
+```
+
+## Getting started
+
+Vune can be installed as a plugin to your existing vue app. You must create a `store` and pass that into the plugin options. The store will then be provided to all components, as well as being accessible on `$store`.
+
+```js
+// src/store.js
+
+import { createStore, mutation } from 'vune';
+
+const store = createStore({
+  state: {
+    counter: 1,
+  },
+  init(state) {
+    const increment = mutation(() => {
+      state.counter += 1;
+    });
+
+    return {
+      increment,
+    };
+  },
+});
+```
+
+```js
+// src/main.js
+
+import Vune from 'vune'
+import store from './store'
+
+const app = createApp(...)
+
+app.use(Vune, { store })
+```
+
 ## Store
 
 The store is the base object, but you can create sub-state, called `modules` that nest state, mutations, and actions within your store.
+
+A store has a few special properties added to the properties returned from `init`
+
+- `state` The fully nested state, includes state from vune modules
+- `$subscribe` Subscribe to named mutations
+- `$subscribeAction` Subscribe to named actions
+- `$provideSymbol` an `InjectionKey` that will provide the store
