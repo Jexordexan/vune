@@ -1,7 +1,7 @@
 import { createStore, mutation, storeProvider, module } from '../../src';
 import todosModule from './todos';
 
-const store = createStore({
+export const store = createStore({
   state: {
     counter: 1,
   },
@@ -19,4 +19,4 @@ const store = createStore({
   },
 });
 
-export const { provideStore, useStore } = storeProvider(store);
+export const { useStore, useModule } = storeProvider(store);
