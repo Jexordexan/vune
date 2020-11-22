@@ -1,6 +1,6 @@
 // import { UnwrapNestedRefs } from 'vue';
 
-import { InjectionKey } from 'vue';
+import { App, InjectionKey } from 'vue';
 
 export interface StoreOptions<State, R> {
   state: State;
@@ -32,7 +32,8 @@ export type Store<T, R> = R & {
   state: Readonly<T>;
   $subscribe: (cb: Listener<any>) => () => void;
   $subscribeAction: (cb: SubscribeOptions<any>) => () => void;
-  $provideSymbol: InjectionKey<R>;
+  $injectKey: InjectionKey<R>;
+  install(app: App): void;
 };
 
 export interface MutationObject {

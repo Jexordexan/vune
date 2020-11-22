@@ -11,7 +11,7 @@ export function defineModule<State extends object, R>(config: ModuleOptions<Stat
   return config;
 }
 
-export function module<State extends object, R>(name: string, config: ModuleOptions<State, R>): R | Promise<R> {
+export function module<State extends object, R>(name: string, config: ModuleOptions<State, R>): R {
   modulePath.push(name);
   const state = reactive(config.state) as State;
   const currentState = getCurrentState();
@@ -32,6 +32,11 @@ export function module<State extends object, R>(name: string, config: ModuleOpti
   const storeModule = config.init(state);
 
   function onReady(resolvedModule: R) {
+    Object.defineProperty(resolvedModule, '__module_key__', {
+      value: modulePath.join('/'),
+      enumerable: false,
+      writable: false,
+    });
     nameMutations(resolvedModule);
     nameActions(resolvedModule);
   }

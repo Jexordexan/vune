@@ -88,13 +88,11 @@ const store = createStore({
 
 ```js
 // src/main.js
-
-import Vune from 'vune'
 import store from './store'
 
 const app = createApp(...)
 
-app.use(Vune, { store })
+app.use(store)
 ```
 
 ## Store
@@ -106,4 +104,4 @@ A store has a few special properties added to the properties returned from `init
 - `state` The fully nested state, includes state from vune modules
 - `$subscribe` Subscribe to named mutations
 - `$subscribeAction` Subscribe to named actions
-- `$provideSymbol` an `InjectionKey` that will provide the store
+- `$injectKey` an `InjectionKey` that will provide the store
