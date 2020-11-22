@@ -7,7 +7,10 @@
     "build": "rm -rf ./dist && rollup -c",
     "bump": "npm version $(node ./scripts/bump.js)",
     "version": "npm run changelog && git add CHANGELOG.md",
-    "test": "jest"
+    "test": "jest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "main": "dist/vune.js",
   "module": "dist/index.js",
@@ -39,6 +42,7 @@
     "tslib": "^2.0.1",
     "typescript": "^3.9.7",
     "vite": "^1.0.0-rc.9",
+    "vitepress": "^0.8.1",
     "vue": "^3.0.0-rc.5"
   },
   "license": "MIT",
