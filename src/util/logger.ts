@@ -6,20 +6,17 @@ interface Logger {
 
 const logger: Logger = {
   devtools: null,
-  log(...args) {
+  log(data: any) {
     if (process.env.NODE_ENV === 'development' && this.devtools) {
       this.devtools.addTimelineEvent({
         layerId: 'vune-store',
         event: {
           time: Date.now(),
-          data: {
-            text: args.map((arg) => JSON.stringify(arg)).join(' '),
-          },
+          data,
           meta: null,
         },
       });
     }
-    console.log(...args);
   },
 };
 

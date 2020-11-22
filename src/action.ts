@@ -60,7 +60,11 @@ export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A 
   const path = modulePath.join('/');
   const wrapped = ((payload: any) => {
     if (process.env.NODE_ENV === 'development') {
-      logger.log('STARTED', `${path}/${wrapped.__action_key__}`);
+      logger.log({
+        type: 'ACTION:START',
+        path: `${path}/${wrapped.__action_key__}`,
+        payload,
+      });
     }
     const subscriberArgs: [any, any] = [
       {
@@ -80,7 +84,10 @@ export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A 
     const ret = actor(payload);
     function onComplete() {
       if (process.env.NODE_ENV === 'development') {
-        logger.log('FINISHED', `${path}/${wrapped.__action_key__}`);
+        logger.log({
+          type: 'ACTION:FINISH',
+          path: `${path}/${wrapped.__action_key__}`,
+        });
       }
       if (actionSubscriptions.has(rootState)) {
         const { after } = actionSubscriptions.get(rootState)!;

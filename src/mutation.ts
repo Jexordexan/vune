@@ -44,7 +44,11 @@ export function mutation<M extends MutationFunction>(arg1: string | M, arg2?: M)
     }
 
     if (process.env.NODE_ENV === 'development') {
-      logger.log('MUTATION', `${path}/${wrapped.__mutation_key__}`);
+      logger.log({
+        type: 'MUTATION',
+        path: `${path}/${wrapped.__mutation_key__}`,
+        payload,
+      });
     }
     const ret = mutator(payload);
     setCurrentMutation(null);

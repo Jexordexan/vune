@@ -8,15 +8,27 @@ const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: a
   const leftPad = getCurrentMutation() ? '  ' : '';
   const prettyType = type.toUpperCase();
   const prettyPath = path.join('/');
+  const data = {
+    type: prettyType,
+    path: prettyPath,
+    key: key,
+  };
   switch (type) {
     case 'set':
-      logger.log(leftPad, prettyType, prettyPath, key, oldValue, '=>', newValue);
+      logger.log({
+        ...data,
+        oldValue,
+        newValue,
+      });
       break;
     case 'add':
-      logger.log(leftPad, prettyType, prettyPath, key, newValue);
+      logger.log({
+        ...data,
+        newValue,
+      });
       break;
     default:
-      logger.log(leftPad, prettyType, prettyPath, key);
+      logger.log(data);
   }
 };
 
