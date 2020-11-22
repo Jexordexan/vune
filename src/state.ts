@@ -1,4 +1,4 @@
-import { states, modulePath, getIsInitializing, getCurrentMutation } from './globals';
+import { states, modulePath, getIsInitializing, getCurrentMutation, getCurrentActions } from './globals';
 import { watchEffect } from 'vue';
 import { traverse } from './util/traverse';
 import logger from './util/logger';
@@ -12,6 +12,8 @@ const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: a
     type: prettyType,
     path: prettyPath,
     key: key,
+    mutation: getCurrentMutation()?.path,
+    actions: [...getCurrentActions().values()].map((a) => a.path),
   };
   switch (type) {
     case 'set':

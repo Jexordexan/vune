@@ -1,5 +1,5 @@
 import { ActionFunction } from './types';
-import { actionSubscriptions, getCurrentState, getRootState, modulePath } from './globals';
+import { actionSubscriptions, getCurrentState, getRootState, modulePath, setActionStarted } from './globals';
 import { isPromise, isAction } from './util/helpers';
 import logger from './util/logger';
 
@@ -59,6 +59,11 @@ export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A 
 
   const path = modulePath.join('/');
   const wrapped = ((payload: any) => {
+    const actionStopped = setActionStarted({
+      type: 'ACTION:START',
+      path: `${path}/${wrapped.__action_key__}`,
+      payload,
+    });
     if (process.env.NODE_ENV === 'development') {
       logger.log({
         type: 'ACTION:START',
@@ -83,6 +88,7 @@ export function action<A extends ActionFunction>(arg1: string | A, arg2?: A): A 
 
     const ret = actor(payload);
     function onComplete() {
+      actionStopped();
       if (process.env.NODE_ENV === 'development') {
         logger.log({
           type: 'ACTION:FINISH',

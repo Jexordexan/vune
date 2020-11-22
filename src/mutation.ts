@@ -1,4 +1,4 @@
-import { MutationFunction } from './types';
+import { MutationFunction, MutationObject } from './types';
 import { getCurrentState, getRootState, modulePath, setCurrentMutation, subscriptions } from './globals';
 import { isMutation } from './util/helpers';
 import logger from './util/logger';
@@ -22,19 +22,13 @@ export function mutation<M extends MutationFunction>(arg1: string | M, arg2?: M)
 
   const path = modulePath.join('/');
   const wrapped = ((payload: any) => {
-    const subscriberArgs: [any, any] = [
-      {
-        type: wrapped.__mutation_key__!,
-        path,
-        payload,
-      },
-      localState,
-    ];
-    setCurrentMutation({
-      type: name,
-      path,
+    const mutationObject: MutationObject = {
+      type: wrapped.__mutation_key__ || '<anonymous>',
+      path: `${path}/${wrapped.__mutation_key__}`,
       payload,
-    });
+    };
+    const subscriberArgs: [any, any] = [mutationObject, localState];
+    setCurrentMutation(mutationObject);
 
     if (subscriptions.has(rootState)) {
       const callbacks = subscriptions.get(rootState)!;
