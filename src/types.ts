@@ -32,7 +32,7 @@ export type Listener<T> = (action: ActionObject, state: T) => void;
 export type SubscribeOptions<T> = Listener<T> | { before: Listener<T>; after: Listener<T> };
 
 export type Store<T, R> = R & {
-  state: Readonly<T>;
+  $state: Readonly<T>;
   $subscribe: (cb: Listener<any>) => () => void;
   $subscribeAction: (cb: SubscribeOptions<any>) => () => void;
   $injectKey: InjectionKey<R>;
