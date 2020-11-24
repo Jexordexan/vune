@@ -1,6 +1,8 @@
 # Installation
 
-Vunes only peer dependency is Vue 3. If you are working with Vue 2, this is not the package for you.
+## NPM
+
+Vune’s only peer dependency is Vue 3. If you are working with Vue 2, this is not the package for you.
 
 ```bash
 npm install vune
@@ -10,36 +12,12 @@ npm install vune
 yarn add vune
 ```
 
-## Getting started
+## Browser
 
-Vune can be installed as a plugin to your existing vue app. You must create a `store` and pass that into the plugin options. The store will then be provided to all components, as well as being accessible on `$store`.
+Vune can be used in the browser alongside a browser version of Vue 3.
 
-```js
-// src/store.js
+Use this script tag in your index.html
 
-import { createStore, mutation } from 'vune';
-
-const store = createStore({
-  state: {
-    counter: 1,
-  },
-  init(state) {
-    const increment = mutation(() => {
-      state.counter += 1;
-    });
-
-    return {
-      increment,
-    };
-  },
-});
-```
-
-```js
-// src/main.js
-import store from './store'
-
-const app = createApp(...)
-
-app.use(store)
+```html
+<script src="https://unpkg.com/vune@0.3.0/dist/vune.min.js" />
 ```

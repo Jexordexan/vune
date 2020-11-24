@@ -8,8 +8,10 @@ module.exports = {
       {
         text: 'Guide',
         children: [
-          { text: 'Getting started', link: '/guide/installation' },
-          { text: 'Store', link: '/guide/store' },
+          { text: 'Installation', link: '/guide/installation' },
+          { text: 'Getting started', link: '/guide/getting-started' },
+          { text: 'Creating a Store', link: '/guide/store' },
+          { text: 'Using in a component', link: '/guide/components' },
           { text: 'Mutations', link: '/guide/mutations' },
           { text: 'Actions', link: '/guide/actions' },
           { text: 'Modules', link: '/guide/modules' },

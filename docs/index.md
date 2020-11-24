@@ -2,7 +2,7 @@
 
 # What is Vune?
 
-`vune` is a state-management plugin for Vue 3 inspired by the composition API. It is similar to vuex, but is fully type-complete through to your components.
+`vune` is a state-management plugin for Vue 3 inspired by the composition API. It is similar to vuex, but is meant to be fully type-complete through to your components.
 
 Following the composition API pattern, everything is done inside the `init` function (similar to `setup` in a component). Everything is done with a composition function! These functions overlap with the vuex terminology to make things easier.
 
