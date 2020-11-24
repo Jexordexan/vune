@@ -8,7 +8,7 @@ export interface BaseOptions<State, R> {
 }
 
 export interface StoreOptions<State, R> extends BaseOptions<State, R> {
-  injectKey: string | number | Symbol | InjectionKey<R>;
+  injectKey?: string | InjectionKey<R>;
 }
 export interface ModuleOptions<State, R> extends BaseOptions<State, R> {
   name?: string;
