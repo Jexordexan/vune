@@ -5,7 +5,6 @@ import logger from './util/logger';
 
 const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: any) => {
   if (getIsInitializing()) return;
-  const leftPad = getCurrentMutation() ? '  ' : '';
   const prettyType = type.toUpperCase();
   const prettyPath = path.join('/');
   const data = {

@@ -30,6 +30,11 @@ export function module<State extends object, R>(name: string, config: ModuleOpti
   }
 
   const storeModule = config.init(state);
+  Object.defineProperty(state, '__is_module__', {
+    value: true,
+    enumerable: false,
+    writable: false,
+  });
 
   function onReady(resolvedModule: R) {
     Object.defineProperty(resolvedModule, '__module_key__', {

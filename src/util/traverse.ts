@@ -5,7 +5,8 @@ export function traverse(value: unknown, seen: Set<object> = new Set()) {
     return value;
   }
 
-  if (seen.size > 0 && isModule(value)) {
+  if (seen.size > 0 && value.__is_module__) {
+    // Prevent traversing modules as they have already traversed themselves
     return value;
   }
 

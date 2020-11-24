@@ -2,12 +2,15 @@
 
 import { App, InjectionKey } from 'vue';
 
-export interface StoreOptions<State, R> {
+export interface BaseOptions<State, R> {
   state: State;
   init(state: State): R;
 }
 
-export interface ModuleOptions<State, R> extends StoreOptions<State, R> {
+export interface StoreOptions<State, R> extends BaseOptions<State, R> {
+  injectKey: string | number | Symbol | InjectionKey<R>;
+}
+export interface ModuleOptions<State, R> extends BaseOptions<State, R> {
   name?: string;
 }
 
