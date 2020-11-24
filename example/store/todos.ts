@@ -1,4 +1,4 @@
-import { defineModule, mutation } from '../../src';
+import { action, defineModule, mutation } from '../../src';
 
 export interface TodoItem {
   id: string;
@@ -30,11 +30,18 @@ export default defineModule({
       state.items = state.items.filter((item) => item.id === id);
     });
 
+    const toggleAll = action(() => {
+      state.items.forEach((item) => {
+        toggleTodo(item.id);
+      });
+    });
+
     return {
       state,
       newTodo,
       toggleTodo,
       removeTodo,
+      toggleAll,
     };
   },
 });

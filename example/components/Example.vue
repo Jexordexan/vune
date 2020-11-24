@@ -9,6 +9,7 @@
       <Todo :todo="todo" @toggle="toggleTodo(todo.id)" />
     </li>
   </ul>
+  <button @click="toggleAll">TOGGLE ALL</button>
 </template>
 
 <script>
@@ -23,7 +24,7 @@ export default {
   },
   setup() {
     const {
-      todos: { state, newTodo, toggleTodo },
+      todos: { state, newTodo, toggleTodo, toggleAll },
     } = useStore();
     const newText = ref('');
     return {
@@ -31,6 +32,7 @@ export default {
       newText,
       newTodo,
       toggleTodo,
+      toggleAll,
     };
   },
 };
