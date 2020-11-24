@@ -10,12 +10,12 @@ let id = 0;
 
 export default defineModule({
   state: {
-    items: [],
+    items: [] as TodoItem[],
   },
   init(state) {
     const newTodo = mutation((text: string) =>
       state.items.push({
-        id: id++,
+        id: String(id++),
         text,
         done: false,
       })
