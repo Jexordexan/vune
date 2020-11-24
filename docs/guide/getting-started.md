@@ -1,6 +1,10 @@
 # Getting started
 
-Vune can be installed as a plugin to your existing vue app. You must create a `store` and pass that into the plugin options. The store will then be provided to all components, as well as being accessible on `$store`.
+Make sure you have installed `vune` in your project. [Installation instructions](/guide/installation).
+
+This guide assumes you have a standard project structure like the one created by the Vue CLI.
+
+First, create a file called `store.js` in your `src` folder:
 
 ```js
 // src/store.js
@@ -20,13 +24,27 @@ const store = createStore({
     };
   },
 });
+
+export default store;
 ```
+
+Then import that into your `main.js` file and add it to your app.
 
 ```js
 // src/main.js
-import store from './store'
+import App from './App.vue';
+import store from './store';
 
-const app = createApp(...)
+const app = createApp(App);
 
-app.use(store)
+app.use(store);
+```
+
+From there the `$store` property can be accessed in any component
+
+```html
+<template>
+  Counter: {{ $store.$state.counter }}
+  <button @click="$store.increment">Increment</button>
+</template>
 ```

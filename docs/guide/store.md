@@ -13,7 +13,7 @@ import { createStore } from 'vune'
 
 const store = createStore({
   state: {
-    name: 'Atreides',
+    house: 'Atreides',
     leader: 'Paul Atreides'
     spice: 12334,
     allies: ['Fremen', 'Bene Gesserit'],

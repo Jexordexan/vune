@@ -8,48 +8,46 @@ Following the composition API pattern, everything is done inside the `init` func
 
 - `mutation()` – Wraps a mutation
 - `action()` – Wraps an async action or group of mutations
-- `getter()` – Returns a wraped `ComputedRef` based on your state
-- `module()` – Wraps a nested state module for separation of logical concerns
+- `getter()` – Returns a wrapped `ComputedRef` based on your state
+- `module()` – Wraps a nested state module for logic groups
 
 Here is a sample store:
 
 ```ts
 import { createStore, mutation, action, module, getter } from 'vune';
-import messagesModule from './modules/messages';
+import housesModule from './modules/houses';
 import { wait } from './util';
 
 const store = createStore({
   state: {
-    counter: 0,
+    spice: 0,
   },
   init(state) {
-    const increment = mutation(() => state.counter++);
+    const mineSpice = mutation(() => state.spice++);
 
-    const asyncReset = action(async () => {
+    const dustStorm = action(async () => {
       await wait(1000);
-      state.counter = 0;
+      state.spice = 0; // No mutation needed, changes tracked automatically
     });
 
     // Nest grouped logic into a module
-    const messages = module('messages', messagesModule);
-
-    const messageCount = getter(() => messages.all.length);
+    const houses = module('houses', housesModule);
+    const houseCount = getter(() => houses.list.length);
 
     return {
-      // state is implicitly returned and made readonly
-      increment,
-      asyncReset,
-      messages,
-      messageCount,
+      houses,
+      mineSpice,
+      dustStorm,
+      houseCount,
     };
   },
 });
 
-store.increment(); // MUTATION: increment
+store.mineSpice(); // MUTATION: mineSpice
 
-store.asyncReset(); // ACTION:START: asyncReset
+store.dustStorm(); // ACTION: dustStorm
 
-store.messages.create('Hello friend'); // MUTATION: messages.create
+store.houses.create('Atreides'); // MUTATION: messages.create
 
-store.messageCount; // => number
+store.houseCount; // => number
 ```
