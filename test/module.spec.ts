@@ -57,8 +57,8 @@ describe('module', () => {
     });
 
     it('should add state to top level sate', () => {
-      expect(store.state.foo).toBe(1);
-      expect(store.state.mod1.foo).toBe(2);
+      expect(store.$state.foo).toBe(1);
+      expect(store.$state.mod1.foo).toBe(2);
     });
   });
 });

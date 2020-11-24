@@ -107,7 +107,7 @@ describe('subscribeAction', () => {
           path: '',
           payload: undefined,
         },
-        store.state
+        store.$state
       );
     });
 
@@ -120,7 +120,7 @@ describe('subscribeAction', () => {
           path: '',
           payload: 'payload',
         },
-        store.state
+        store.$state
       );
     });
 
@@ -133,7 +133,7 @@ describe('subscribeAction', () => {
           path: 'nested',
           payload: 'payload',
         },
-        store.state.nested
+        store.$state.nested
       );
     });
   });
@@ -154,7 +154,7 @@ describe('subscribeAction', () => {
           path: '',
           payload: undefined,
         },
-        store.state
+        store.$state
       );
     });
 
@@ -168,7 +168,7 @@ describe('subscribeAction', () => {
           path: '',
           payload: 1,
         },
-        store.state
+        store.$state
       );
       expect(afterSpy).toBeCalledWith(
         {
@@ -176,7 +176,7 @@ describe('subscribeAction', () => {
           path: '',
           payload: 1,
         },
-        store.state
+        store.$state
       );
     });
   });
