@@ -12,7 +12,7 @@ const onTrigger = (path: any[]) => ({ type, key, target, oldValue, newValue }: a
     path: prettyPath,
     key: key,
     mutation: getCurrentMutation()?.path,
-    actions: [...getCurrentActions().values()].map((a) => a.path),
+    actions: Array.from(getCurrentActions().values()).map((a) => a.path),
   };
   switch (type) {
     case 'set':
