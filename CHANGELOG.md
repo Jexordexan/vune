@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/Jexordexan/vune/compare/v0.4.0...v0.4.1) (2020-11-25)
+
+
+### Bug Fixes
+
+* TypeError in actions ([da13121](https://github.com/Jexordexan/vune/commit/da13121669a35e76c61427131b1ff4858df49f36))
+
+
+
 # [0.4.0](https://github.com/Jexordexan/vune/compare/v0.3.0...v0.4.0) (2020-11-25)
 
 
