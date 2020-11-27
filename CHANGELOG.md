@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/Jexordexan/vune/compare/v0.4.1...v0.4.2) (2020-11-27)
+
+
+### Bug Fixes
+
+* enable vue devtools logging ([a2bfdc3](https://github.com/Jexordexan/vune/commit/a2bfdc3221ca7b1eeb5305429c3fea8cbb5c4db6))
+
+
+
 ## [0.4.1](https://github.com/Jexordexan/vune/compare/v0.4.0...v0.4.1) (2020-11-25)
 
 
