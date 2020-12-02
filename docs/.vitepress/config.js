@@ -1,7 +1,10 @@
+const package = require('../../package.json');
+
 module.exports = {
   title: 'Vune',
   description: 'Just playing around.',
   themeConfig: {
+    version: package.version,
     nav: [{ text: 'Guide', link: '/guide/' }],
     sidebar: [
       { text: 'What is Vune?', link: '/' },

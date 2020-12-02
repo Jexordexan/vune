@@ -16,8 +16,9 @@ yarn add vune
 
 Vune can be used in the browser alongside a browser version of Vue 3.
 
-Use this script tag in your index.html
+Use this script tag in your `index.html`
 
-```html
-<script src="https://unpkg.com/vune@0.3.0/dist/vune.min.js" />
-```
+<!-- I had to hardcode this because normal code blocks dont support interpolation -->
+<div class="language-html">
+<pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/vune@{{ $site.themeConfig.version }}/dist/vune.min.js<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
