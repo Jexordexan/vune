@@ -28,8 +28,8 @@ export const setActionStarted = (action: ActionObject) => {
     setActionStopped(id);
   };
 };
-export const setActionStopped = (actionId: number) => {
-  currentActions.delete(actionId);
+export const setActionStopped = (id: number) => {
+  currentActions.delete(id);
 };
 
 export const getCurrentMutation = () => currentMutation;
