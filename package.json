@@ -53,6 +53,6 @@
     }
   },
   "dependencies": {
-    "@vue/devtools-api": "^6.0.0-beta.2"
+    "@vue/devtools-api": "^6.0.0-beta.3"
   }
 }

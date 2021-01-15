@@ -1,5 +1,5 @@
 import { App, reactive, readonly } from 'vue';
-import devtoolsApi from '@vue/devtools-api';
+import { setupDevtoolsPlugin } from '@vue/devtools-api';
 
 import { StoreOptions, Store } from './types';
 import { setIsInitializing, stateStack } from './globals';
@@ -35,7 +35,7 @@ export function createStore<RootState extends object, R>(config: StoreOptions<Ro
     install(app: App) {
       if (process.env.NODE_ENV === 'development' && typeof __VUE_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined') {
         __VUE_DEVTOOLS_GLOBAL_HOOK__.once('init', () => {
-          devtoolsApi.setupDevtoolsPlugin(
+          setupDevtoolsPlugin(
             {
               id: 'store',
               label: 'Vune',
