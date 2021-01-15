@@ -23,3 +23,7 @@ export function isAction(val: any): val is ActionFunction {
 export function isPromise(val: any): val is Promise<any> {
   return val instanceof Promise;
 }
+
+export function convertToHex(color: string): number {
+  return parseInt(color.replace(/#/g, ''), 16);
+}

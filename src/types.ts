@@ -9,6 +9,7 @@ export interface BaseOptions<State, R> {
 
 export interface StoreOptions<State, R> extends BaseOptions<State, R> {
   injectKey?: string | InjectionKey<R>;
+  timelineColor?: string;
 }
 export interface ModuleOptions<State, R> extends BaseOptions<State, R> {
   name?: string;

@@ -8,6 +8,7 @@ import { guard } from './state';
 import { nameMutations } from './mutation';
 import { nameActions } from './action';
 import logger from './util/logger';
+import { convertToHex } from './util/helpers';
 
 const devtoolsLayerId = 'vune-store';
 declare var __VUE_DEVTOOLS_GLOBAL_HOOK__: any | null;
@@ -24,6 +25,7 @@ export function createStore<RootState extends object, R>(config: StoreOptions<Ro
   nameActions(store);
 
   const $injectKey = config.injectKey ?? Symbol();
+  const color = config.timelineColor ?? '#D5BA9C';
 
   const augmentedStore = Object.assign(store, {
     $state: readonly(state),
@@ -43,7 +45,7 @@ export function createStore<RootState extends object, R>(config: StoreOptions<Ro
               devtools.addTimelineLayer({
                 id: devtoolsLayerId,
                 label: 'Vune',
-                color: 0xd5ba9c,
+                color: convertToHex(color),
               });
               logger.devtools = devtools;
             }
