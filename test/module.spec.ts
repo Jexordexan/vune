@@ -1,4 +1,16 @@
-import { createStore, module } from '../src';
+import { createStore, module, defineModule } from '../src';
+
+describe('defineModule', () => {
+  it('should return what is provided', () => {
+    const obj = {
+      state: {},
+      init() {
+        return {};
+      },
+    };
+    expect(defineModule(obj)).toEqual(obj);
+  });
+});
 
 describe('module', () => {
   it('should throw error if outside of initialization', () => {
