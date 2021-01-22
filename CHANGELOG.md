@@ -1,3 +1,19 @@
+# [0.5.0](https://github.com/Jexordexan/vune/compare/v0.4.2...v0.5.0) (2021-01-22)
+
+
+### Bug Fixes
+
+* Actions not stopping correctly ([3ad1dd6](https://github.com/Jexordexan/vune/commit/3ad1dd6496bfab8407c149ffad3f4a108040d9b8))
+* **docs:** Use real package version ([e742236](https://github.com/Jexordexan/vune/commit/e742236cdfa01390b229467d8869610c788ac796))
+
+
+### Features
+
+* Add timeline layer info ([0a27988](https://github.com/Jexordexan/vune/commit/0a27988c5e32eedcb7b5e5c9e0eb3a7ba59fefcf))
+* Add timelineColor to store options ([ac36466](https://github.com/Jexordexan/vune/commit/ac36466f4881f79b9a0cb0b85611608bee1e27f3))
+
+
+
 ## [0.4.2](https://github.com/Jexordexan/vune/compare/v0.4.1...v0.4.2) (2020-11-27)
 
 
